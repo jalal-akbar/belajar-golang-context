@@ -11,6 +11,7 @@ import (
 func WithTimeOut(ctx context.Context) chan int {
 	channel := make(chan int) // Channel
 	go func() {
+		defer close(channel)
 		count := 1
 		for {
 			select {
